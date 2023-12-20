@@ -6,7 +6,7 @@ import Project from "./project";
 import { useInView } from "react-intersection-observer";
 import { useActiveSectionContext } from "@/context/active-section-context";
 
-export default function projects() {
+export default function Projects() {
   const { ref, inView } = useInView();
   const { setActiveSection } = useActiveSectionContext();
 
