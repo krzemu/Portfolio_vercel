@@ -1,14 +1,19 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { BsArrowRight, BsGithub, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
+import { useSectionInView } from "@/lib/hooks";
+
 export default function Hero() {
+  const { ref } = useSectionInView("Home");
+
   return (
     <section
       className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
-      id="home">
+      id="home"
+      ref={ref}>
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
@@ -21,11 +26,11 @@ export default function Hero() {
               width="256"
               height="256"
               priority={true}
-              className="h-48 w-48 rounded-full border-[0.35rem] border-white shadow-xl"
+              className="h-48 w-48 rounded-full border-[0.35rem] border-white shadow-xl drag-none"
             />
           </motion.div>
           <motion.span
-            className="text-6xl  absolute bottom-0 right-0"
+            className="text-6xl  absolute bottom-0 right-0 select-none drag-none"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{

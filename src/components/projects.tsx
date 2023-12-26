@@ -1,23 +1,15 @@
 "use client";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import SectionHeading from "./section-heading";
 import { projectsData } from "@/lib/data";
 import Project from "./project";
-import { useInView } from "react-intersection-observer";
-import { useActiveSectionContext } from "@/context/active-section-context";
+import { useSectionInView } from "@/lib/hooks";
 
 export default function Projects() {
-  const { ref, inView } = useInView();
-  const { setActiveSection } = useActiveSectionContext();
-
-  useEffect(() => {
-    if (inView) {
-      setActiveSection("Projects");
-    }
-  }, [inView, setActiveSection]);
+  const { ref } = useSectionInView("Projects");
 
   return (
-    <section id="projects" className="scroll-mt-28" ref={ref}>
+    <section id="projects" className="scroll-mt-28 mb-28" ref={ref}>
       <SectionHeading>My projects</SectionHeading>
       <div className="flex flex-col gap-4 sm:gap-8">
         {projectsData.map((project, index) => (
