@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 import { BsArrowRight, BsGithub, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { useSectionInView } from "@/lib/hooks";
+import { useActiveSectionContext } from "@/context/active-section-context";
 
 export default function Hero() {
   const { ref } = useSectionInView("Home");
+  const { setTimeOfLastClick, setActiveSection } = useActiveSectionContext();
 
   return (
     <section
@@ -64,24 +66,28 @@ export default function Hero() {
         }}>
         <Link
           href="#contact"
-          className="bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 hover:bg-gray-950 transition-all group cursor-pointer">
+          className="bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 hover:bg-gray-950 transition-all group cursor-pointer"
+          onClick={() => {
+            setActiveSection("Contact");
+            setTimeOfLastClick(Date.now());
+          }}>
           Contact me here{" "}
           <BsArrowRight className="transition opacity-70 group-hover:translate-x-1 group-hover:opacity-85" />
         </Link>
         <a
-          className="bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none border border-black/10 focus:scale-110 hover:scale-110 active:scale-105 transition-all group cursor-pointer"
+          className="bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none borderBlack focus:scale-110 hover:scale-110 active:scale-105 transition-all group cursor-pointer"
           href="/CV.pdf"
           download>
           Download CV{" "}
           <HiDownload className="transition opacity-70 group-hover:translate-y-1 group-hover:opacity-85" />
         </a>
         <a
-          className="bg-white p-4 flex items-center gap-2 rounded-full outline-none border border-black/10 focus:scale-[1.15] hover:scale-[1.15] active:scale-[1.07] transition-all group cursor-pointer"
+          className="bg-white p-4 flex items-center gap-2 rounded-full outline-none borderBlack focus:scale-[1.15] hover:scale-[1.15] active:scale-[1.07] transition-all group cursor-pointer"
           href="#">
           <BsLinkedin className="transition opacity-70 group-hover:opacity-90" />
         </a>
         <a
-          className="bg-white p-4 flex items-center gap-2 rounded-full outline-none border border-black/10 focus:scale-[1.15] hover:scale-[1.15] active:scale-[1.07] transition-all group cursor-pointer"
+          className="bg-white p-4 flex items-center gap-2 rounded-full outline-none borderBlack focus:scale-[1.15] hover:scale-[1.15] active:scale-[1.07] transition-all group cursor-pointer"
           href="https://github.com/krzemu"
           target="_blank"
           rel="nofollow noopener noreferrer">
