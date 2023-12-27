@@ -8,6 +8,7 @@ const nextConfig = {
             },
         ],
     },
+    transpilePackages: ['html-to-text']
 
 
 }
