@@ -29,7 +29,7 @@ export const sendEmail = async (formData: FormData) => {
             subject: 'Nowa wiadomość! LTmedia Portfolio',
             reply_to: email as string,
             // text: message as string,
-            react: createElement(ContactForm, { email: email as string, message: message as string })
+            react: ContactForm({ email: email as string, message: message as string })
             // <ContactForm message={ message } email = { email } />
         });
     } catch (error: unknown) {
